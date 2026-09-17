@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RapidReach - Instant Emergency Services. One tap. All responders. No account. No delay.">
+    <title>RapidReach - Emergency Services at Your Fingertips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #DC143C;
+            --primary-dark: #B71C1C;
+            --secondary: #1a1a2e;
+            --accent-blue: #0066cc;
+            --text-primary: #1a1a2e;
+            --text-secondary: #666666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --success-green: #10b981;
+            --warning-yellow: #f59e0b;
+            --info-blue: #3b82f6;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-top {
+            background: var(--secondary);
+            color: white;
+            padding: var(--spacing-md);
+            text-align: center;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .header-top svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-lg) var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ========== EMERGENCY NOTICE BANNER ========== */
+        .emergency-banner {
+            margin-top: 120px;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border-left: 4px solid var(--primary);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .emergency-banner-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .emergency-message {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .emergency-message h3 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        .emergency-message p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .emergency-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            background: white;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .emergency-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #fff5f5 100%);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+        }
+
+        .hero-subheading {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 20px;
+            margin-bottom: var(--spacing-lg);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--info-blue);
+        }
+
+        .trust-pill svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .cta-cluster {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .cta-cluster .btn-primary {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .reassurance-badges {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 14px;
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-mockup {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: var(--bg-white);
+            border-radius: 40px;
+            border: 12px solid var(--secondary);
+            box-shadow: var(--shadow-lg), 0 30px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-notch {
+            width: 120px;
+            height: 25px;
+            background: var(--secondary);
+            border-radius: 0 0 20px 20px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            padding: var(--spacing-md);
+            overflow: hidden;
+        }
+
+        .phone-status {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .phone-header {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        .phone-prompt {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quick-tiles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quick-tile {
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quick-tile:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .quick-tile-icon {
+            font-size: 24px;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .quick-tile-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .quick-tile-number {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-mockup {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        /* ========== SECTION 3: QUICK ACTIONS ========== */
+        .section-actions {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: var(--bg-white);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .section-heading p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .card-button {
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .card-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ========== FORM SECTION ========== */
+        .form-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eef5 100%);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-lg);
+        }
+
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        /* ========== FEATURE GRID ========== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .feature-box {
+            background: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== HOW IT WORKS ========== */
+        .how-it-works {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: var(--bg-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .step-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== PRIVACY SECTION ========== */
+        .privacy-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #efe7ff 100%);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .privacy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .privacy-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .privacy-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .privacy-item {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .privacy-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .privacy-text {
+            flex: 1;
+        }
+
+        .privacy-text strong {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .privacy-text p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: var(--spacing-xl);
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            header {
+                position: relative;
+            }
+
+            .header-main {
+                padding: var(--spacing-md);
+            }
+
+            .emergency-banner {
+                margin-top: 0;
+            }
+
+            .cta-cluster {
+                flex-direction: column;
+            }
+
+            .cta-cluster .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .reassurance-badges {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+
+            .phone-mockup {
+                display: none;
+            }
+
+            .form-container {
+                padding: var(--spacing-lg);
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-top">
+            🚨 <strong>FOR LIFE-THREATENING EMERGENCIES:</strong> Call 911 directly or your local emergency number
+        </div>
+        <div class="header-main">
+            <a href="#" class="logo">
+                🚑 RapidReach
+            </a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#safety">Safety</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="cta-buttons">
+                <button class="btn-secondary">Sign In</button>
+                <button class="btn-primary">Get Started</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="main">
+        <!-- Emergency Notice Banner -->
+        <div class="emergency-banner">
+            <div class="emergency-banner-content">
+                <div class="emergency-message">
+                    <h3>⚡ Emergency Direct Dial</h3>
+                    <p>In life-threatening situations, call your local emergency number immediately. RapidReach is an additional resource, not a replacement for emergency services.</p>
+                </div>
+                <a href="#form" class="emergency-link">Get Started Now →</a>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="trust-pill">
+                        ✓ Trusted by millions
+                    </div>
+                    <h1>Emergency Response. One Tap. No Delays.</h1>
+                    <p class="hero-subheading">
+                        RapidReach instantly connects you to ambulance, police, fire, and medical services without complex menus or wait times. Location-aware. Privacy-first. Always available.
+                    </p>
+                    <div class="cta-cluster">
+                        <button class="btn-primary">🚨 Activate SOS</button>
+                        <button class="btn-secondary">Learn More</button>
+                    </div>
+                    <div class="reassurance-badges">
+                        <div class="badge">✓ No Account Needed</div>
+                        <div class="badge">✓ Works Offline</div>
+                        <div class="badge">✓ Location Aware</div>
+                    </div>
+                </div>
+                <div class="hero-mockup">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status">
+                                <span>9:41</span>
+                                <span>📶 📡 🔋</span>
+                            </div>
+                            <div class="phone-header">RapidReach</div>
+                            <div class="phone-prompt">What help do you need?</div>
+                            <div class="quick-tiles">
+                                <div class="quick-tile">
+                                    <div class="quick-tile-icon">🚑</div>
+                                    <div class="quick-tile-name">Ambulance</div>
+                                    <div class="quick-tile-number">Dial 108</div>
+                                </div>
+                                <div class="quick-tile">
+                                    <div class="quick-tile-icon">🚨</div>
+                                    <div class="quick-tile-name">Police</div>
+                                    <div class="quick-tile-number">Dial 100</div>
+                                </div>
+                                <div class="quick-tile">
+                                    <div class="quick-tile-icon">🔥</div>
+                                    <div class="quick-tile-name">Fire</div>
+                                    <div class="quick-tile-number">Dial 101</div>
+                                </div>
+                                <div class="quick-tile">
+                                    <div class="quick-tile-icon">🆘</div>
+                                    <div class="quick-tile-name">SOS Multi</div>
+                                    <div class="quick-tile-number">All</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Section -->
+        <section class="section-actions">
+            <div class="section-container">
+                <div class="section-heading">
+                    <h2>Choose Your Emergency Service</h2>
+                    <p>Tap to connect instantly to the right responders for your situation</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="service-card">
+                        <div class="card-icon">🚑</div>
+                        <h3 class="card-title">Ambulance</h3>
+                        <p class="card-description">Immediate paramedic dispatch, trauma care, and emergency cardiac support.</p>
+                        <button class="card-button">Connect to Ambulance</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="card-icon">🚨</div>
+                        <h3 class="card-title">Police & Patrol</h3>
+                        <p class="card-description">Law enforcement intervention, immediate public safety defense, and accident reports.</p>
+                        <button class="card-button">Connect to Police</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="card-icon">🔥</div>
+                        <h3 class="card-title">Fire & Rescue</h3>
+                        <p class="card-description">Structural fire containment, vehicle extrication, and chemical leak assistance.</p>
+                        <button class="card-button">Connect to Fire</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="card-icon">🆘</div>
+                        <h3 class="card-title">Rapid SOS Hub</h3>
+                        <p class="card-description">Broadcast GPS location, notify emergency contacts, and prime direct lines together.</p>
+                        <button class="card-button">Activate SOS Hub</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section" id="form">
+            <div class="form-container">
+                <h2 class="form-title">Stay Connected</h2>
+                <p class="form-subtitle">Register your emergency contacts and preferences</p>
+                <form id="rapidreachForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Your name" 
+                            required
+                            minlength="2"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your@email.com" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="+1 (555) 000-0000" 
+                            required
+                            minlength="10"
+                        >
+                    </div>
+                    <button type="submit" class="form-submit">Register Now</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="section-container">
+                <div class="section-heading">
+                    <h2>How It Works</h2>
+                    <p>Three simple steps to emergency help</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Choose Service</h3>
+                        <p class="step-description">Select the emergency service you need from the quick-tap options on your home screen.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Share Location</h3>
+                        <p class="step-description">Grant permission for your device to share GPS coordinates with responders for precise location routing.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Connect Instantly</h3>
+                        <p class="step-description">Direct connection to live operators with your medical and contact information automatically transmitted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" style="padding: var(--spacing-2xl) var(--spacing-lg); background: white;">
+            <div class="section-container">
+                <div class="section-heading">
+                    <h2>Powerful Features for Life-Saving Moments</h2>
+                    <p>Everything you need in one accessible app</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📇</div>
+                        <h3 class="feature-title">Trusted Contacts</h3>
+                        <p class="feature-description">Keep family and friends within rapid reach. Transmit one-tap SMS coordinates with distress warnings.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🏥</div>
+                        <h3 class="feature-title">Emergency Medical Card</h3>
+                        <p class="feature-description">Store critical blood type, allergies, and donor wishes locally without login requirements.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📍</div>
+                        <h3 class="feature-title">Nearby Services</h3>
+                        <p class="feature-description">Locate 24/7 emergency rooms, trauma centers, and fire stations within seconds.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">☎️</div>
+                        <h3 class="feature-title">Quick Calling</h3>
+                        <p class="feature-description">Bypass confusing menus and connect to live operators immediately without delays.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Section -->
+        <section class="privacy-section" id="safety">
+            <div class="privacy-container">
+                <h2 class="privacy-title">Your Privacy & Safety First</h2>
+                <div class="privacy-items">
+                    <div class="privacy-item">
+                        <div class="privacy-icon">🔒</div>
+                        <div class="privacy-text">
+                            <strong>Location Privacy</strong>
+                            <p>Your GPS is only queried when you explicitly request nearby services or activate SOS.</p>
+                        </div>
+                    </div>
+                    <div class="privacy-item">
+                        <div class="privacy-icon">⚙️</div>
+                        <div class="privacy-text">
+                            <strong>No Account Tracking</strong>
+                            <p>Zero analytics, no cookie harvesting, and no background location tracking ever.</p>
+                        </div>
+                    </div>
+                    <div class="privacy-item">
+                        <div class="privacy-icon">📡</div>
+                        <div class="privacy-text">
+                            <strong>Works Offline</strong>
+                            <p>Emergency hotlines and basic protocols remain accessible even during network outages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why RapidReach Section -->
+        <section style="padding: var(--spacing-2xl) var(--spacing-lg); background: var(--bg-light);">
+            <div class="section-container">
+                <div class="section-heading">
+                    <h2>Built for Moments When Simplicity Matters</h2>
+                    <p>Four core principles guiding every design decision</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3 class="feature-title" style="color: var(--primary); font-size: 24px;">⚡ FAST</h3>
+                        <p class="feature-description"><strong>Fewer Steps:</strong> Reach dispatch in one deliberate tap without complex menus.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3 class="feature-title" style="color: var(--primary); font-size: 24px;">👁️ CLEAR</h3>
+                        <p class="feature-description"><strong>Cognitive Ease:</strong> Ultra-high contrast, bold icons, and unambiguous color codes.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3 class="feature-title" style="color: var(--primary); font-size: 24px;">♿ ACCESSIBLE</h3>
+                        <p class="feature-description"><strong>WCAG AAA Ready:</strong> 48px tap targets, full screen reader and keyboard traversal.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3 class="feature-title" style="color: var(--primary); font-size: 24px;">🌍 UNIVERSAL</h3>
+                        <p class="feature-description"><strong>Web Access:</strong> Works instantly on any mobile, tablet, or desktop browser worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section style="padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, var(--primary) 0%, #b71c1c 100%); text-align: center; color: white;">
+            <div class="section-container">
+                <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: var(--spacing-lg);">
+                    Ready for Emergency Response That Works?
+                </h2>
+                <p style="font-size: 18px; margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Every second counts in emergencies. RapidReach delivers immediate connection to responders when you need it most.
+                </p>
+                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary" style="background: white; color: var(--primary);">
+                        🚨 Activate SOS Now
+                    </button>
+                    <button class="btn-secondary" style="border-color: white; color: white;">
+                        Learn More
+                    </button>
+                </div>
+                <p style="margin-top: var(--spacing-lg); font-size: 14px; opacity: 0.9;">
+                    Your safety is our mission. Fastest emergency response. Zero delays. Always ready.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>🚑 RapidReach</h3>
+                <p>Instant accessible life-safety tools designed to operate seamlessly under extreme stress and low connectivity.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Emergency Services</h3>
+                <div class="footer-links">
+                    <a href="#ambulance">One-Tap Dispatch</a>
+                    <a href="#nearby">Nearby First Responders</a>
+                    <a href="#medical">Digital Medical ID</a>
+                    <a href="#contacts">Emergency Contacts</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Privacy & Security</h3>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Security</a>
+                    <a href="#">Data Protection</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <div class="footer-links">
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Status Page</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 RapidReach Emergency Services. Built for life-saving moments. All rights reserved.</p>
+            <p>Emergency: Call 911 or your local emergency number. RapidReach is an additional resource, not a replacement for emergency services.</p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Google Apps Script Deployment URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlu-SF0uTwEt6jNIAWjJz740EsYolkzYyTvAgZxKJMDjHDpi7vB6XrSNpGjBMnGr_yTA/exec';
+
+        console.log('🚀 RapidReach Form Script Loaded');
+        console.log('Apps Script URL:', APPS_SCRIPT_URL);
+
+        // Form Submission Handler
+        const form = document.getElementById('rapidreachForm');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('📋 Form submission initiated');
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            console.log('Form data:', { name, email, phone });
+
+            // Validate inputs
+            if (!name || !email || !phone) {
+                showMessage('❌ Please fill in all fields', 'error');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('❌ Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Phone validation (at least 10 digits)
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                showMessage('❌ Please enter a valid phone number (at least 10 digits)', 'error');
+                return;
+            }
+
+            // Show loading state
+            const submitButton = form.querySelector('.form-submit');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = '⏳ Submitting...';
+            submitButton.disabled = true;
+
+            try {
+                console.log('🔄 Sending data to Google Apps Script...');
+
+                // Method 1: Try with FormData (better CORS compatibility)
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('phone', phone);
+
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
+                // Try to parse as JSON
+                let data;
+                const contentType = response.headers.get('content-type');
+                console.log('Content-Type:', contentType);
+
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                    console.log('JSON response:', data);
+                } else {
+                    const text = await response.text();
+                    console.log('Text response:', text);
+                    data = { success: response.ok };
+                }
+
+                if (data.success || response.ok) {
+                    console.log('✅ Submission successful!');
+                    showMessage('✅ Registration successful! We\'ve saved your information.', 'success');
+                    form.reset();
+                    console.log('Form cleared');
+                } else {
+                    console.error('❌ Backend returned error:', data);
+                    showMessage('❌ Submission failed: ' + (data.message || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                console.error('❌ Form submission error:', error);
+                console.error('Error type:', error.type);
+                console.error('Error message:', error.message);
+
+                // Show detailed error message
+                let errorMsg = 'Connection error. ';
+                if (error.message.includes('Failed to fetch')) {
+                    errorMsg += 'CORS issue or network problem. Check console for details.';
+                } else if (error.message.includes('JSON')) {
+                    errorMsg += 'Server response error. Your data may have been saved.';
+                } else {
+                    errorMsg += error.message;
+                }
+
+                showMessage('❌ ' + errorMsg, 'error');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Show message helper
+        function showMessage(message, type) {
+            console.log('📢 Message:', message, 'Type:', type);
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            
+            // Auto-hide error after 8 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 8000);
+            }
+            
+            // Auto-hide success message after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Test connection to Apps Script
+        async function testConnection() {
+            console.log('\n🧪 Testing connection to Apps Script...\n');
+            try {
+                const response = await fetch(APPS_SCRIPT_URL);
+                console.log('✅ Connection successful!');
+                console.log('Status:', response.status);
+                console.log('Headers:', response.headers);
+            } catch (error) {
+                console.error('❌ Connection failed:', error);
+            }
+        }
+
+        // Run connection test on page load
+        window.addEventListener('load', () => {
+            console.log('🌐 Page fully loaded');
+            // Uncomment to test connection
+            // testConnection();
+        });
+
+        // Smooth scroll navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Quick action buttons
+        document.querySelectorAll('.card-button, .btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text.includes('Ambulance')) {
+                    console.log('🚑 Ambulance service selected');
+                    alert('Connecting to Ambulance Service (Dial 108)...');
+                } else if (text.includes('Police')) {
+                    console.log('🚨 Police service selected');
+                    alert('Connecting to Police (Dial 100)...');
+                } else if (text.includes('Fire')) {
+                    console.log('🔥 Fire service selected');
+                    alert('Connecting to Fire & Rescue (Dial 101)...');
+                } else if (text.includes('SOS')) {
+                    console.log('🆘 SOS service selected');
+                    alert('Activating SOS Multi-Service Alert...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
